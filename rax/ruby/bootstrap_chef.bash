@@ -1,3 +1,6 @@
+#
+# Run as: bash <( curl -L https://raw.github.com/saibaba/devops/master/rax/ruby/bootstrap_chef.bash )
+#
 DEFAULT_RUBY_VERSION="2.0.0-p0"
  
 sudo apt-get -y install curl git-core bzip2 build-essential zlib1g-dev libssl-dev autoconf
@@ -21,7 +24,6 @@ source /etc/profile
 has_ruby_version=`rvm list | grep -c $DEFAULT_RUBY_VERSION`
 if [ $has_ruby_version == "0" ]; then
   rvm install $DEFAULT_RUBY_VERSION
-  # rvm system ; rvm gemset export system.gems ; rvm $DEFAULT_RUBY_VERSION; rvm gemset import system.gems
   rvm alias create default $DEFAULT_RUBY_VERSION
 else
   echo "RVM has already installed Ruby v$DEFAULT_RUBY_VERSION"
